@@ -12,18 +12,24 @@ npm install vue-toggle-switch
 
 ## Usage
 
-Import and use the component in your Vue project (using Vue3 Composition API here):
+Import the component and stylesheet for use in your Vue project:
 
-```javascript
-import VueToggleSwitch from 'vue-toggle-switch'
-import { ref } from 'vue'
+```vue
+<script setup>
+    import { ref } from 'vue'
+    import VueToggleSwitch from '@zkramer22/vue-toggle-switch'
+    import '@zkramer22/vue-toggle-switch/dist/vue-toggle-switch.css'
 
-const switchState = ref(false)
+    const switchState = ref(false)
+</script>
+
+<template>
+    <vue-toggle-switch v-model="switchState"/>
+</template>
 ```
-```html
-<vue-toggle-switch v-model="switchState"></vue-toggle-switch>
-```
+
 ^ Make sure to pass an initial value from the parent component to the switch with `v-model`. the switch will update the value via two-way data binding.
+
 
 ## Props
 
@@ -37,32 +43,37 @@ Your component will look like this by default:
 </picture>
 
 But, by using props...
-```javascript
-import VueToggleSwitch from 'vue-toggle-switch' 
 
-// these are the available props, along with the values they accept
-const properties = {
-    states: ['one', 'two'],  // [String, String]
-    bgColor: 'white',  // String
-    textColor: '#222222',  // String
-    switchOnColor: 'rgb(107, 166, 255)',  // String
-    switchOffColor: 'pink',  // String
-    width: 150,  // Number (px)
-    height: 40,  // Number (px)
-    padding: 3,  // Number (px)
-    borderColor: 'black',  // String
-    textSize: 18,  // Number
-    textColor: '#222222',  // String
-    borderRadius: 5,  // Number
-}
-```
-```html
+```vue
+<script setup>
+    import { ref } from 'vue'
+    import VueToggleSwitch from '@zkramer22/vue-toggle-switch'
+    import '@zkramer22/vue-toggle-switch/dist/vue-toggle-switch.css'
+
+    const switchState = ref(false)
+
+    const switchProps = {
+        states: ['one', 'two'],  // [String, String]
+        bgColor: 'white',  // String
+        textColor: '#222222',  // String
+        switchOnColor: 'rgb(107, 166, 255)',  // String
+        switchOffColor: 'pink',  // String
+        width: 150,  // Number (px)
+        height: 40,  // Number (px)
+        padding: 3,  // Number (px)
+        borderColor: 'black',  // String
+        textSize: 18,  // Number
+        textColor: '#222222',  // String
+        borderRadius: 5,  // Number
+    }
+</script>
+
 <template>
-    <vue-toggle-switch v-bind="properties"></vue-toggle-switch>
+    <vue-toggle-switch v-model="switchState" v-bind="switchProps"/>
 </template>
 ```
 
-...You can change the appearance of the switch:
+...You can change the appearance of the switch!
 
 <picture>
   <img alt="Image Alt Text" src="/img/props-off.png">
