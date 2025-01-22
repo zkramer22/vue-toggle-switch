@@ -12,20 +12,18 @@ npm install vue-toggle-switch
 
 ## Usage
 
-Import and use the component in your Vue project:
+Import and use the component in your Vue project (using Vue3 Composition API here):
 
 ```javascript
 import VueToggleSwitch from 'vue-toggle-switch'
+import { ref } from 'vue'
 
-export default {
-    components: {
-        VueToggleSwitch
-    }
-}
+const switchState = ref(false)
 ```
 ```html
-<vue-toggle-switch></vue-toggle-switch>
+<vue-toggle-switch v-model="switchState"></vue-toggle-switch>
 ```
+^ Make sure to pass an initial value from the parent component to the switch with `v-model`. the switch will update the value via two-way data binding.
 
 ## Props
 
@@ -34,10 +32,11 @@ Your component will look like this by default:
 ![screenshot of default component](/img/default-off.png)\
 ![screenshot of default component](/img/default-on.png)
 
-By using these props...
+But, by using props...
 ```javascript
-import VueToggleSwitch from 'vue-toggle-switch'
+import VueToggleSwitch from 'vue-toggle-switch' 
 
+// these are the available props, along with the values they accept
 const properties = {
     states: ['one', 'two'],  // [String, String]
     bgColor: 'white',  // String
