@@ -5,9 +5,10 @@
     "type": "module",
     "main": "dist/vue-toggle-switch.cjs.js",
     "module": "dist/vue-toggle-switch.esm.js",
+    "unpkg": "dist/vue-toggle-switch.umd.js",
     "files": [
         "dist/",
-        "src/VueToggleSwitch.vue"
+        "src/"
     ],
     "scripts": {
         "dev": "vite",
@@ -23,12 +24,15 @@
     ],
     "author": "Zachary Thomas Kramer",
     "license": "MIT",
-    "devDependencies": {
-        "@vitejs/plugin-vue": "^5.2.1",
-        "vite": "^6.0.11",
-        "vue": "^3.5.13"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zkramer22/vue-toggle-switch"
     },
     "dependencies": {
         "vue": "^3.0.0"
-    }
+    },
+    "peerDependencies": {
+        "vue": "^3.0.0"
+    },
+    "browserslist": "> 1%, not dead"
 }
