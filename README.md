@@ -7,7 +7,7 @@ A simple toggle switch component for Vue 3.
 You can install this component via npm or yarn:
 
 ```bash
-npm install vue-toggle-switch
+npm install @zkramer22/vue-toggle-switch
 ```
 
 ## Usage
