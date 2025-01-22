@@ -29,10 +29,10 @@ export default {
 
 ## Props
 
-Your component will look like this by default:\
+Your component will look like this by default:
 
 ![screenshot of default component](/img/default-off.png)\
-![screenshot of default component](/img/default-on.png)\
+![screenshot of default component](/img/default-on.png)
 
 By using these props...
 ```javascript
@@ -60,5 +60,6 @@ const properties = {
 ```
 
 ...You can change the appearance of the switch:
-![screenshot of component with props](/img/props-off.png)
+
+![screenshot of component with props](/img/props-off.png)\
 ![screenshot of component with props](/img/props-on.png)
