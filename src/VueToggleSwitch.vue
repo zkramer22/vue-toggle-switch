@@ -51,10 +51,26 @@ const props = defineProps({
         type: Number,
         default: 10,
     },
+    textOutside: {
+        type: Boolean,
+        default: false,
+    },
+    dropShadow: {
+        type: String,
+        // default: 'lightgray',
+    },
 })
 
 const styleVars = computed(() => {
     return {
+        wrapper: {
+            width: props.textOutside
+                ? `${props.width * 2}px`
+                : `${props.width}px`,
+        },
+        text: {
+            fontSize: `${props.textSize}px`,
+        },
         element: {
             backgroundColor: props.bgColor,
             width: `${props.width}px`,
@@ -63,9 +79,10 @@ const styleVars = computed(() => {
             border: props.borderColor 
                 ? `1px solid ${props.borderColor}`
                 : 'none',
-            fontSize: `${props.textSize}px`,
             borderRadius: `${props.borderRadius}px`,
-
+            boxShadow: props.dropShadow
+                ? `0px 2px 3px -1px ${props.dropShadow}`
+                : 'none'
         },
         handle: {
             backgroundColor: switchState.state ? props.switchOnColor : props.switchOffColor,
@@ -79,6 +96,8 @@ const styleVars = computed(() => {
         },
     }
 })
+
+const textOutsideClass = computed(() => props.textOutside ? 'outside' : '')
 
 const switchState = reactive({
     mouseIsDown: false,
@@ -164,14 +183,40 @@ function handleMouseup(e) {
 </script>
 
 <template>
-    <div @click="updateSwitch(true)" class="vue-toggle-switch-el" :style="styleVars.element">
-        <div class="vue-toggle-switch-handle" @mousedown="handleMousedown" :style="styleVars.handle"></div>
-        <div class="vue-toggle-switch-text">{{ states[0] }}</div>
-        <div class="vue-toggle-switch-text">{{ states[1] }}</div>
+    <div class="vue-toggle-switch-wrapper" :style="styleVars.wrapper">
+        <div @click="updateSwitch(true)" class="vue-toggle-switch-el" :style="styleVars.element">
+            <div class="vue-toggle-switch-handle" @mousedown="handleMousedown" :style="styleVars.handle"></div>
+        </div>
+        <div :class="`vue-toggle-switch-text ${textOutsideClass}`" :style="styleVars.text">{{ states[0] }}</div>
+        <div :class="`vue-toggle-switch-text ${textOutsideClass}`" :style="styleVars.text">{{ states[1] }}</div>
     </div>
 </template>
 
 <style>
+.vue-toggle-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.vue-toggle-switch-text {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    pointer-events: none;
+}
+.vue-toggle-switch-text:nth-of-type(2) {
+    left: 0;
+}
+.vue-toggle-switch-text:nth-of-type(3) {
+    right: 0;
+}
+.vue-toggle-switch-text.outside {
+    width: 25%;
+}
 .vue-toggle-switch-el {
     font-family: inherit;
     position: relative;
@@ -194,13 +239,5 @@ function handleMouseup(e) {
     .vue-toggle-switch-handle:active {
         cursor: grabbing;
     }
-}
-.vue-toggle-switch-text {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    pointer-events: none;
 }
 </style>

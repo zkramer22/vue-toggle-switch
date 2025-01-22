@@ -65,6 +65,8 @@ But, by using props...
         textSize: 18,  // Number
         textColor: '#222222',  // String
         borderRadius: 5,  // Number
+        textOutside: true  // Boolean
+        dropShadow: true  // Boolean
     }
 </script>
 
