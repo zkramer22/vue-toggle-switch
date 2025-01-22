@@ -1,11 +1,14 @@
 {
-    "name": "vue-toggle-switch",
-    "version": "1.0.0",
+    "name": "@zkramer22/vue-toggle-switch",
+    "version": "1.0.1",
     "description": "A customizable toggle switch component for Vue 3",
     "type": "module",
     "main": "dist/vue-toggle-switch.cjs.js",
     "module": "dist/vue-toggle-switch.esm.js",
     "unpkg": "dist/vue-toggle-switch.umd.js",
+    "publishConfig": {
+        "access": "public"
+    },
     "files": [
         "dist/",
         "src/"
@@ -26,7 +29,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/zkramer22/vue-toggle-switch"
+        "url": "git+https://github.com/zkramer22/vue-toggle-switch.git"
     },
     "dependencies": {
         "vue": "^3.0.0"

@@ -1,4 +1,4 @@
 node_modules
-.temp
+dev
 package-lock.json
 dist
