@@ -29,8 +29,12 @@ const switchState = ref(false)
 
 Your component will look like this by default:
 
-![screenshot of default component](/img/default-off.png)\
-![screenshot of default component](/img/default-on.png)
+<picture>
+  <img alt="Image Alt Text" src="/img/default-off.png">
+</picture>
+<picture>
+  <img alt="Image Alt Text" src="/img/default-on.png">
+</picture>
 
 But, by using props...
 ```javascript
@@ -60,5 +64,9 @@ const properties = {
 
 ...You can change the appearance of the switch:
 
-![screenshot of component with props](/img/props-off.png)\
-![screenshot of component with props](/img/props-on.png)
+<picture>
+  <img alt="Image Alt Text" src="/img/props-off.png">
+</picture>
+<picture>
+  <img alt="Image Alt Text" src="/img/props-on.png">
+</picture>
