@@ -29,9 +29,10 @@ export default {
 
 ## Props
 
-Your component will look like this by default:
-![screenshot of default component](/img/default-off.png)
-![screenshot of default component](/img/default-on.png)
+Your component will look like this by default:\
+
+![screenshot of default component](/img/default-off.png)\
+![screenshot of default component](/img/default-on.png)\
 
 By using these props...
 ```javascript
