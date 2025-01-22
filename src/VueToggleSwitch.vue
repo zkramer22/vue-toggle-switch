@@ -1,7 +1,11 @@
 <script setup>
-import { reactive, computed, } from 'vue'
+import { reactive, computed } from 'vue'
 /////////////////////////// variables /////////////////////////////
 const props = defineProps({
+    modelValue: {
+        type: Boolean,
+        default: false,
+    },
     states: {
         type: Array,
         default: () => ['OFF', 'ON'],
@@ -81,9 +85,11 @@ const switchState = reactive({
     leftBound: null,
     rightBound: null,
     posX: null,
-    state: false,
+    state: props.modelValue,
     width: null,
 })
+
+const emit = defineEmits(['update:modelValue'])
 
 ////////////////////////// methods /////////////////////////////
 function setDefaultSwitchProps() {
@@ -96,6 +102,7 @@ function setDefaultSwitchProps() {
 }
 function updateSwitch(isClick) {
     switchState.state = !switchState.state ? true : false
+    emit('update:modelValue', switchState.state)
     if (isClick) setDefaultSwitchProps()
 }
 function captureClick(e) {
