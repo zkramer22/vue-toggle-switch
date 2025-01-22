@@ -2,32 +2,33 @@
     "name": "vue-toggle-switch",
     "version": "1.0.0",
     "description": "A customizable toggle switch component for Vue 3",
-    "main": "dist/vue-toggle-switch.umd.js",
     "type": "module",
+    "main": "dist/vue-toggle-switch.umd.js",
     "module": "dist/vue-toggle-switch.es.js",
-    "types": "dist/types.d.ts",
     "files": [
-        "dist",
-        "src"
+        "dist/",
+        "src/VueToggleSwitch.vue"
     ],
     "scripts": {
+        "dev": "vite",
         "build": "vite build",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "vite"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
+        "vue3",
+        "vue",
         "toggle",
         "switch",
-        "custom"
+        "component"
     ],
     "author": "Zachary Thomas Kramer",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.2.1",
         "vite": "^6.0.11",
         "vue": "^3.5.13"
     },
-    "peerDependencies": {
+    "dependencies": {
         "vue": "^3.0.0"
     }
 }
