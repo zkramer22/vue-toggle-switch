@@ -6,6 +6,9 @@
     "main": "dist/vue-toggle-switch.cjs.js",
     "module": "dist/vue-toggle-switch.esm.js",
     "unpkg": "dist/vue-toggle-switch.umd.js",
+    "sideEffects": [
+        "dist/vue-toggle-switch.css"
+    ],
     "publishConfig": {
         "access": "public"
     },

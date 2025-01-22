@@ -1,3 +1,3 @@
+// import './vue-toggle-switch.css'
 import VueToggleSwitch from './VueToggleSwitch.vue'
-import './vue-toggle-switch.css'
 export default VueToggleSwitch
