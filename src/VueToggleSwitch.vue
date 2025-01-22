@@ -63,6 +63,7 @@ const styleVars = computed(() => {
                 : 'none',
             fontSize: `${props.textSize}px`,
             borderRadius: `${props.borderRadius}px`,
+
         },
         handle: {
             backgroundColor: switchState.state ? props.switchOnColor : props.switchOffColor,
@@ -161,18 +162,15 @@ function handleMouseup(e) {
 </script>
 
 <template>
-    <div @click="updateSwitch(true)" class="switch-el" :style="styleVars.element">
-        <div class="switch-handle" @mousedown="handleMousedown" :style="styleVars.handle"></div>
-        <div class="switch-text">{{ states[0] }}</div>
-        <div class="switch-text">{{ states[1] }}</div>
+    <div @click="updateSwitch(true)" class="vue-toggle-switch-el" :style="styleVars.element">
+        <div class="vue-toggle-switch-handle" @mousedown="handleMousedown" :style="styleVars.handle"></div>
+        <div class="vue-toggle-switch-text">{{ states[0] }}</div>
+        <div class="vue-toggle-switch-text">{{ states[1] }}</div>
     </div>
 </template>
 
-<style scoped>
-div > * {
-    user-select: none;
-}
-.switch-el {
+<style>
+.vue-toggle-switch-el {
     font-family: inherit;
     position: relative;
     width: 100%;
@@ -180,21 +178,22 @@ div > * {
     display: grid;
     grid-template-columns: 1fr 1fr;
     cursor: pointer;
+    user-select: none;
 }
-.switch-handle {
+.vue-toggle-switch-handle {
     position: absolute;
     width: 50%;
 }
 @media (hover:hover) {
-    .switch-handle:hover {
+    .vue-toggle-switch-handle:hover {
         filter: brightness(.9);
         cursor: pointer;
     }
-    .switch-handle:active {
+    .vue-toggle-switch-handle:active {
         cursor: grabbing;
     }
 }
-.switch-text {
+.vue-toggle-switch-text {
     position: relative;
     display: flex;
     justify-content: center;
