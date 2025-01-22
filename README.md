@@ -29,8 +29,8 @@ const switchState = ref(false)
 
 Your component will look like this by default:
 
-![screenshot of default component](/img/default-off.png)\
-![screenshot of default component](/img/default-on.png)
+(/img/default-off.png)\
+(/img/default-on.png)
 
 But, by using props...
 ```javascript
