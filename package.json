@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "description": "A customizable toggle switch component for Vue 3",
     "type": "module",
-    "main": "dist/vue-toggle-switch.umd.js",
-    "module": "dist/vue-toggle-switch.es.js",
+    "main": "dist/vue-toggle-switch.cjs.js",
+    "module": "dist/vue-toggle-switch.esm.js",
     "files": [
         "dist/",
         "src/VueToggleSwitch.vue"
