@@ -53,20 +53,19 @@ But, by using props...
     const switchState = ref(false)
 
     const switchProps = {
-        states: ['one', 'two'],  // [String, String]
+        states: ['one', 'two'],  // Array ([String, String])
         bgColor: 'white',  // String
         textColor: '#222222',  // String
         switchOnColor: 'rgb(107, 166, 255)',  // String
         switchOffColor: 'pink',  // String
-        width: 150,  // Number (px)
-        height: 40,  // Number (px)
-        padding: 3,  // Number (px)
+        width: 150,  // Number
+        height: 40,  // Number
+        padding: 3,  // Number
         borderColor: 'black',  // String
         textSize: 18,  // Number
         textColor: '#222222',  // String
         borderRadius: 5,  // Number
-        textOutside: true  // Boolean
-        dropShadow: true  // Boolean
+        dropShadow: 'black'  // String
     }
 </script>
 
@@ -82,4 +81,32 @@ But, by using props...
 </picture>
 <picture>
   <img alt="Image Alt Text" src="/img/props-on.png">
+</picture>
+
+
+### version 1.1.0 - `textOutside` prop added:
+
+Move the text outside of the switch by passing `textOutside: true`:
+
+```vue
+<script setup>
+    import { ref } from 'vue'
+    import VueToggleSwitch from '@zkramer22/vue-toggle-switch'
+    import '@zkramer22/vue-toggle-switch/dist/vue-toggle-switch.css'
+
+    const switchState = ref(false)
+
+    const switchProps = {
+        width: 50,  // Number
+        textOutside: true,  // Boolean
+    }
+</script>
+
+<template>
+    <vue-toggle-switch v-model="switchState" v-bind="switchProps"/>
+</template>
+```
+
+<picture>
+  <img alt="Image Alt Text" src="/img/text-outside.png">
 </picture>
