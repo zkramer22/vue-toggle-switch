@@ -5,11 +5,13 @@ import path from 'path'
 export default defineConfig(({ mode }) => {
     const isDev = mode === 'development'
     const isApp = mode === 'app'
-    const outDir = isApp ? 'gh-pages-dist' : 'dist'
+    const outDir = isApp 
+        ? path.resolve(__dirname, 'gh-pages-dist')
+        : path.resolve(__dirname, 'dist')
 
     return {
         plugins: [vue()],
-        root: isDev ? 'dev' : '', // Use 'dev/' as the root directory for development
+        root: isDev || isApp ? 'dev' : '', // Use 'dev/' as the root directory for development
         build: {
             outDir,
             lib: !isApp 
