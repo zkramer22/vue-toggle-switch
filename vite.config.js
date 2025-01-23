@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [vue()],
         root: isDev || isApp ? 'dev' : '', // Use 'dev/' as the root directory for development
+        base: isApp ? '/vue-toggle-switch/' : '/',
         build: {
             outDir,
             lib: !isApp 
