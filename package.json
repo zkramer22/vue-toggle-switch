@@ -18,8 +18,9 @@
     ],
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "vite build --mode npm-package",
+        "build:app": "vite build --mode app",
+        "deploy": "npm run build:app && gh-pages -d gh-pages-dist"
     },
     "keywords": [
         "vue3",
