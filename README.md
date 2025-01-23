@@ -2,7 +2,7 @@
 
 A simple toggle switch component for Vue 3.
 
-## [quick lil demo](zkramer22.github.io/vue-toggle-switch)
+## [quick lil demo](https://zkramer22.github.io/vue-toggle-switch)
 
 ## Installation
 
