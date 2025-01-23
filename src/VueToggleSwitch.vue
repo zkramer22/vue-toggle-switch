@@ -100,15 +100,17 @@ const styleVars = computed(() => {
 const textOutsideClass = computed(() => props.textOutside ? 'outside' : '')
 
 const switchState = reactive({
+    state: props.modelValue,
     mouseIsDown: false,
+    lastClick: null,
+    
+    // the following have defaults and get reset every mouseup
     mouseDownX: null,
     mouseDownTime: null,
     clientX: null,
     leftBound: null,
     rightBound: null,
     posX: null,
-    state: props.modelValue,
-    width: null,
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -125,6 +127,7 @@ function setDefaultSwitchProps() {
 function updateSwitch(isClick) {
     switchState.state = !switchState.state ? true : false
     emit('update:modelValue', switchState.state)
+    switchState.lastClick = new Date()
     if (isClick) setDefaultSwitchProps()
 }
 function captureClick(e) {
@@ -132,7 +135,10 @@ function captureClick(e) {
     window.removeEventListener('click', captureClick, true)
 }
 function handleMousedown(e) {
-    switchState.mouseDownTime = new Date()
+    const now = new Date()
+    switchState.mouseDownTime = now
+    if (switchState.lastClick && now - switchState.lastClick < 300) return
+
     let { clientX } = e
     let { offsetWidth } = e.target
     if (!switchState.state) {
@@ -147,6 +153,8 @@ function handleMousedown(e) {
     switchState.mouseDownX = clientX
     window.addEventListener('mousemove', handleMousemove)
     window.addEventListener('mouseup', handleMouseup)
+    window.addEventListener('touchmove', handleTouchmove)
+    window.addEventListener('touchend', handleTouchend)
 }
 function handleMousemove(e) {
     let { clientX } = e
@@ -178,6 +186,26 @@ function handleMouseup(e) {
     switchState.mouseIsDown = false
     window.removeEventListener('mousemove', handleMousemove)
     window.removeEventListener('mouseup', handleMouseup)
+    window.removeEventListener('touchmove', handleTouchmove)
+    window.removeEventListener('touchend', handleTouchend)
+}
+function handleTouchstart(e) {
+    const touch = e.touches[0]
+        handleMousedown({
+            clientX: touch.clientX,
+            target: e.target,
+        })
+}
+function handleTouchmove(e) {
+    const touch = e.touches[0]
+    handleMousemove({
+        clientX: touch.clientX,
+    })
+}
+function handleTouchend(e) {
+    handleMouseup({
+        clientX: switchState.clientX, // Use the last known position
+    })
 }
 
 </script>
@@ -185,7 +213,10 @@ function handleMouseup(e) {
 <template>
     <div class="vue-toggle-switch-wrapper" :style="styleVars.wrapper">
         <div @click="updateSwitch(true)" class="vue-toggle-switch-el" :style="styleVars.element">
-            <div class="vue-toggle-switch-handle" @mousedown="handleMousedown" :style="styleVars.handle"></div>
+            <div class="vue-toggle-switch-handle" :style="styleVars.handle"
+                @mousedown="handleMousedown"
+                @touchstart="handleTouchstart" 
+            ></div>
         </div>
         <div :class="`vue-toggle-switch-text ${textOutsideClass}`" :style="styleVars.text">{{ states[0] }}</div>
         <div :class="`vue-toggle-switch-text ${textOutsideClass}`" :style="styleVars.text">{{ states[1] }}</div>

@@ -33,7 +33,14 @@ const switch3Props = {
 <template>
     <h1>VueToggleSwitch</h1>
     <h2>@zkramer22</h2>
-    <h4>a Vue3 toggle switch that you can click OR grab n' drag. <br>cuz, well, why not?</h4>
+    <h4>a Vue3 toggle switch that you can 
+        <br>
+        * click *
+        <br>
+        OR 
+        <br>
+        ~ grab & drag ~
+    </h4>
 
     <div class="label">default switch:</div>
     <VueToggleSwitch v-model="switch1State" v-bind="switch1Props"/>
